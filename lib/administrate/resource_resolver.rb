@@ -9,7 +9,7 @@ module Administrate
     end
 
     def namespace
-      controller_path.split("/").first
+      controller_path.split('/').first.to_sym
     end
 
     def resource_class
@@ -17,7 +17,7 @@ module Administrate
     end
 
     def resource_name
-      model_path_parts.map(&:underscore).join("__").to_sym
+      model_path_parts.map(&:underscore).join('__').to_sym
     end
 
     def resource_title
@@ -27,7 +27,7 @@ module Administrate
     private
 
     def resource_class_name
-      model_path_parts.join("::")
+      model_path_parts.join('::')
     end
 
     def model_path_parts
@@ -35,7 +35,7 @@ module Administrate
     end
 
     def controller_path_parts
-      controller_path.split("/")[1..-1].map(&:singularize)
+      controller_path.split('/')[1..].map(&:singularize)
     end
 
     attr_reader :controller_path
